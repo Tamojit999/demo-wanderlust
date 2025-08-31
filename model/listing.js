@@ -3,15 +3,18 @@ const listingschema = new mongoose.Schema(
     {
         title:{
             type:String,
-            required:true,
+            required : true
         },
         description:{
             type:String
         },
         image:{
-            type:String,
-            default:"https://static.thenounproject.com/png/1077596-200.png",
-            set:(v)=> v===""?"https://static.thenounproject.com/png/1077596-200.png":v,
+            filename:{
+                type:String,
+                default:"listingimage"
+            },
+            
+            url: String
         },
         price:{
             type:Number

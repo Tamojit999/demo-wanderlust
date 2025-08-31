@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/CStyle.css">
+</head>
+<body>
+  
+    <form action="/listing" method="post">
+
+        <div class="form-block">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+
+        <div class="form-block">
+            <label for="image">Image URL</label>
+            <input type="text" id="image" name="image" required>
+        </div>
+
+        <div class="form-block">
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" min="0" required>
+        </div>
+        
+        <div class="form-block">
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required>
+        </div>
+
+        <div class="form-block">
+            <label for="country">Country:</label>
+            <select id="country" name="country" required>
+                <option value="">Select a country</option>
+                <option value="usa">United States</option>
+                <option value="canada">Canada</option>
+                <option value="uk">United Kingdom</option>
+                <option value="australia">Australia</option>
+                <!-- Add more countries as needed -->
+            </select>
+        </div>
+        
+        <div class="form-block">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="5" required></textarea>
+        </div>
+  
+
+        <div class="form-block">
+            <button type="submit">Add</button>
+        </div>
+
+    </form>
+
+</body>
+</html>

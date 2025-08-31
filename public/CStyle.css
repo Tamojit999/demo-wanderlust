@@ -1,0 +1,101 @@
+/* Airbnb-like form styling */
+form {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 32px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Form block spacing */
+.form-block {
+    margin-bottom: 20px;
+}
+
+/* Labels */
+.form-block label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #222;
+}
+
+/* Inputs, selects, textareas */
+.form-block input,
+.form-block select,
+.form-block textarea {
+    width: 94%;
+    padding: 14px 16px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background-color: #f7f7f7;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Hover & focus */
+.form-block input:hover,
+.form-block select:hover,
+.form-block textarea:hover {
+    border-color: #aaa;
+}
+
+.form-block input:focus,
+.form-block select:focus,
+.form-block textarea:focus {
+    border-color: #FF385C; /* Airbnb pink-red */
+    box-shadow: 0 0 0 3px rgba(255,56,92,0.2);
+    background-color: #fff;
+    outline: none;
+}
+
+/* Textarea specific */
+.form-block textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Submit button (Airbnb style) */
+.form-block button {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    background: #FF385C; /* Airbnb signature color */
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+}
+
+/* Button hover/active */
+.form-block button:hover {
+    background: #E31C5F;
+}
+
+.form-block button:active {
+    transform: scale(0.98);
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    form {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .form-block input,
+    .form-block select,
+    .form-block textarea {
+        font-size: 15px;
+    }
+
+    .form-block button {
+        font-size: 15px;
+        padding: 12px;
+    }
+}
