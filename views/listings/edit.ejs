@@ -1,0 +1,44 @@
+<% layout('./layouts/boilerplate') -%>
+<body>
+  
+    <form class="FORM" method="post" action="/listings/<%= editdata._id %>?_method=PUT">
+
+        <div class="form-block">
+            <label for="title">Title:</label>
+            <input type="text" id="title" value="<%= editdata.title %>" name="title" required>
+        </div>
+
+        <div class="form-block">
+            <label for="image">Image URL</label>
+            <input type="text" id="image" value="<%= editdata.image.url %>" name="image" required>
+        </div>
+
+        <div class="form-block">
+            <label for="price">Price:</label>
+            <input type="number" id="price" value="<%= editdata.price %>" name="price" min="0" required>
+        </div>
+        
+        <div class="form-block">
+            <label for="location">Location:</label>
+            <input type="text" id="location" value="<%= editdata.location %> name="location" required>
+        </div>
+
+        <div class="form-block">
+            <label for="country">Country:</label>
+            <input type="text" id="location" value="<%= editdata.country %> " name="country" required>
+           
+        </div>
+        
+        <div class="form-block">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="5" required><%=editdata.description%></textarea>
+        </div>
+  
+
+        <div class="form-block">
+            <button type="submit">Submit</button>
+        </div>
+
+    </form>
+
+</body>
