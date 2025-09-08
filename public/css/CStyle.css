@@ -1,4 +1,19 @@
 /* Airbnb-like form styling */
+
+body
+{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+font-family: "Plus Jakarta Sans", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: 500 !important;
+  font-size: medium !important;
+}
+.container
+{
+    flex: 1;
+}
 .FORM {
     max-width: 500px;
     margin: 40px auto;
@@ -6,7 +21,6 @@
     background: #fff;
     border-radius: 16px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 /* Form block spacing */
@@ -168,10 +182,7 @@ font-size: 1.8rem;
 .card-body
 {
     padding: 0 !important;
-    font-family: "Plus Jakarta Sans", sans-serif !important;
-  font-optical-sizing: auto !important;
-  font-weight: 500 !important;
-  font-size: medium !important;
+    
   width: 100% !important;
    
 }
@@ -187,4 +198,20 @@ font-size: 1.8rem;
 {
     opacity: 0.2;
     background-color: white;
+}
+.show-img
+{
+    height: 40vh;
+   
+    
+}
+.btn
+{
+    padding: 10px 20px !important;
+
+  border-radius: 7px !important;
+  font-size: 16px !important;
+  cursor: pointer !important;
+  margin-bottom: 1rem;
+  
 }
