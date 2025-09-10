@@ -90,6 +90,23 @@ font-family: "Plus Jakarta Sans", sans-serif !important;
 .form-block button:hover {
     background: #E31C5F;
 }
+.newbtn{
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    background: #FF385C; /* Airbnb signature color */
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+}
+
+/* Button hover/active */
+.newbtn:hover {
+    background: #E31C5F;
+}
 
 .form-block button:active {
     transform: scale(0.98);
