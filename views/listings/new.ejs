@@ -1,7 +1,7 @@
 <% layout('./layouts/boilerplate') -%>
 <body>
   
-  <form action="/listing" method="post" novalidate class="FORM needs-validation" id="listingForm">
+  <form action="/listings" method="post" novalidate class="FORM needs-validation" id="listingForm">
 
     <div class="mb-3">
       <label for="title" class="form-label">Title:</label>
@@ -20,7 +20,7 @@
 
     <div class="mb-3">
       <label for="price" class="form-label">Price:</label>
-      <input class="form-control" type="number" id="price" name="price" min="0" required>
+      <input class="form-control" type="number" id="price" name="listing[price]" min="0" required>
       <div class="invalid-feedback">Please enter a valid price.</div>
     </div>
         

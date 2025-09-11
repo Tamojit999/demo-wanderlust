@@ -15,7 +15,20 @@ app.engine('ejs',ejsmate);
 main().catch(err => console.log(err));
 const Asyncwrap=require('./utilily/asyncwrap.js');
 const ExpressError=require('./utilily/ExpressError.js');
+let{listingschema}=require("./schema.js");
+const validatelisting=(req,res,next)=>
+{
+    let {error}=listingschema.validate(req.body);
+    if(error)
+    {
+        let errmsg=error.details.map((el)=>el.message).join(",");
+        throw new ExpressError(404,errmsg);
+    }
+    else{
+        next();
+    }
 
+}
 async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
 }
@@ -47,14 +60,10 @@ app.get('/listing/:id',Asyncwrap(async (req,res)=>
  res.render('./listings/show.ejs',{ data });
  
 }));
-app.post('/listing',
+app.post('/listing',validatelisting,
 Asyncwrap(async (req,res,next)=>
 {
-    if(!req.body)
-    {
-        return next(new ExpressError(400,"not valid data"));
-    }
-   
+    
     let { title,image_url,price,location,country,description }=req.body;
    await Listing.insertOne({title:title,image:{url:image_url},price:price,location:location,country:country,description:description});
     res.redirect('/listings');
@@ -66,12 +75,8 @@ app.get('/listings/:id/edit',Asyncwrap(async(req,res)=>
     res.render('./listings/edit.ejs',{editdata});
 
 }));
-app.put('/listings/:id',Asyncwrap( async (req, res) => {
+app.put('/listings/:id',validatelisting,Asyncwrap( async (req, res) => {
   let id = req.params.id;
-    if(!req.body)
-    {
-        return next(new ExpressError(400,"not valid data"));
-    }
   let { title, image, price, location, country, description } = req.body;
   await Listing.findByIdAndUpdate(id, {
     title,
