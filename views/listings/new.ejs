@@ -5,7 +5,7 @@
 
     <div class="mb-3">
       <label for="title" class="form-label">Title:</label>
-      <input type="text" class="form-control" id="title" name="title" required>
+      <input type="text" class="form-control" id="title" name="listing[title]" required>
       <div class="invalid-feedback">Please enter a title.</div>
       <div class="valid-feedback">
       Looks good!
@@ -14,7 +14,7 @@
 
     <div class="mb-3">
       <label for="image" class="form-label">Image URL</label>
-      <input type="url" class="form-control" id="image" name="image" required>
+      <input type="url" class="form-control" id="image" name="listing[image][url]" required>
       <div class="invalid-feedback">Please provide a valid image URL.</div>
     </div>
 
@@ -26,25 +26,21 @@
         
     <div class="mb-3">
       <label for="location" class="form-label">Location:</label>
-      <input type="text" class="form-control" id="location" name="location" required>
+      <input type="text" class="form-control" id="location" name="listing[location]" required>
       <div class="invalid-feedback">Please enter a location.</div>
     </div>
 
     <div class="mb-3">
-      <label for="country" class="form-label">Country:</label>
-      <select id="country" name="country" class="form-select" required>
-        <option value="">Select a country</option>
-        <option value="usa">United States</option>
-        <option value="canada">Canada</option>
-        <option value="uk">United Kingdom</option>
-        <option value="australia">Australia</option>
-      </select>
+     
+  <label for="country" class="form-label">Country:</label>
+  <input type="text" class="form-control" id="country" name="listing[country]" required>
+
       <div class="invalid-feedback">Please select a country.</div>
     </div>
         
     <div class="mb-3">
       <label for="description" class="form-label">Description:</label>
-      <textarea id="description" name="description" rows="5" class="form-control" required></textarea>
+      <textarea id="description" name="listing[description]" rows="5" class="form-control" required></textarea>
       <div class="invalid-feedback">Please provide a description.</div>
     </div>
   

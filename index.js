@@ -16,9 +16,25 @@ main().catch(err => console.log(err));
 const Asyncwrap=require('./utilily/asyncwrap.js');
 const ExpressError=require('./utilily/ExpressError.js');
 let{listingschema}=require("./schema.js");
+let{reviewschema}=require("./schema.js");
+const Listing=require('./model/listing.js');
+const Review=require("./model/review.js");
 const validatelisting=(req,res,next)=>
 {
     let {error}=listingschema.validate(req.body);
+    if(error)
+    {
+        let errmsg=error.details.map((el)=>el.message).join(",");
+        throw new ExpressError(404,errmsg);
+    }
+    else{
+        next();
+    }
+
+}
+const validatereview=(req,res,next)=>
+{
+    let {error}=reviewschema.validate(req.body);
     if(error)
     {
         let errmsg=error.details.map((el)=>el.message).join(",");
@@ -41,7 +57,7 @@ app.get('/',(req,res)=>
 {
     res.send("root working");
 });
-const Listing=require('./model/listing.js');
+
 app.get('/listings',Asyncwrap(async (req,res)=>
 {
     const alllistings=await Listing.find({});
@@ -53,21 +69,23 @@ app.get('/listing/new',(req,res)=>
 {
     res.render('./listings/new.ejs');
 });
+//show rout
 app.get('/listing/:id',Asyncwrap(async (req,res)=>
 {
  let id=req.params.id;
- const data= await Listing.findById(id);
+ const data= await Listing.findById(id).populate("review");
  res.render('./listings/show.ejs',{ data });
  
 }));
-app.post('/listing',validatelisting,
-Asyncwrap(async (req,res,next)=>
-{
-    
-    let { title,image_url,price,location,country,description }=req.body;
-   await Listing.insertOne({title:title,image:{url:image_url},price:price,location:location,country:country,description:description});
-    res.redirect('/listings');
+//create
+app.post("/listings", validatelisting, Asyncwrap(async (req, res, next) => {
+    // req.body.listing contains the nested object from your form
+    const newListing = new Listing(req.body.listing);
+
+    await newListing.save();
+    res.redirect(`/listing/${newListing._id}`);
 }));
+
 app.get('/listings/:id/edit',Asyncwrap(async(req,res)=>
 {
     let id=req.params.id;
@@ -75,17 +93,12 @@ app.get('/listings/:id/edit',Asyncwrap(async(req,res)=>
     res.render('./listings/edit.ejs',{editdata});
 
 }));
-app.put('/listings/:id',validatelisting,Asyncwrap( async (req, res) => {
-  let id = req.params.id;
-  let { title, image, price, location, country, description } = req.body;
-  await Listing.findByIdAndUpdate(id, {
-    title,
-    image: { url: image },
-    price,
-    location,
-    country,
-    description
-  });
+//update
+app.put('/listings/:id', validatelisting, Asyncwrap(async (req, res) => {
+  let { id } = req.params;
+
+  await Listing.findByIdAndUpdate(id, req.body.listing); 
+
   res.redirect(`/listing/${id}`);
 }));
 app.delete('/listings/:id',Asyncwrap(async(req,res)=>
@@ -96,6 +109,23 @@ app.delete('/listings/:id',Asyncwrap(async(req,res)=>
 
 
 }));
+//review
+app.post('/listing/:id/review',validatereview,Asyncwrap(async(req,res)=>{
+let listing=await Listing.findById(req.params.id);
+let newreview=new Review(req.body.review);
+listing.review.push(newreview);
+await newreview.save();
+await listing.save();
+res.redirect(`/listing/${listing._id}`);
+}));
+//delte review
+app.delete('/listing/:id/review/:reviewId',Asyncwrap(async(req,res)=>{
+    let {id,reviewId}=req.params;
+    await Review.findByIdAndDelete(reviewId);
+    await Listing.findByIdAndUpdate(id,{$pull:{review:reviewId}});
+    res.redirect(`/listing/${id}`);
+}));
+
 app.all(/.*/,(req,res,next)=>
 {
     return next(new ExpressError(404,"Page not found"));
