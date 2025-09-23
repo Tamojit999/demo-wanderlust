@@ -39,7 +39,7 @@
             <div class="col-8 offset-2 mb-3">
                 <hr>
                 <h2>leave you review</h2>
-                <form action="/listing/<%= data._id %>/review" method="post" novalidate class="needs-validation">
+                <form action="/listings/<%= data._id %>/review" method="post" novalidate class="needs-validation">
                     <div class="mb-3 mt-3">
                         <label for="rating" class="form-label">rating</label>
                         <input type="range" class="form-range" min="1" max="5" name="review[rating]" id="rating">
@@ -52,7 +52,7 @@
                     </div>
                     <button class="btn btn-outline-success">submit</button>
                     <hr>
-
+                </form>
                     <h4>All reviews</h4>
                     <div class="row">
                         <% for(let r of data.review){ %>
@@ -64,7 +64,7 @@
                                     </p>
                                     <p class="card-text">Rating: <%= r.rating %>
                                     </p>
-                                    <form action="/listing/<%= data._id%>/review/<%=r._id%>?_method=DELETE" method="POST" class="mb-3">
+                                    <form action="/listings/<%= data._id%>/review/<%=r._id%>?_method=DELETE" method="POST" class="mb-3">
                                         <button class="btn btn-dark btn-sm ">Delete</button>
                                     </form>
                                 </div>
@@ -76,7 +76,7 @@
                     </div>
 
 
-                </form>
+              
             </div>
 
         </div>
