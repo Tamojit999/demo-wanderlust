@@ -35,7 +35,7 @@ router.get('/:id',Asyncwrap(async (req,res)=>
  const data= await Listing.findById(id).populate("review");
  if(!data)
  {
-     req.flash('err','listing not found');
+     req.flash('error','listing not found');
     res.redirect(`/listings`);
 
  }
@@ -60,7 +60,7 @@ router.get('/:id/edit',Asyncwrap(async(req,res)=>
     const editdata= await Listing.findById(id);
     if(!editdata)
  {
-     req.flash('err','listing not found');
+     req.flash('error','listing not found');
     res.redirect(`/listings`);
 
  }

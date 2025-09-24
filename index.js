@@ -15,10 +15,14 @@ app.engine('ejs',ejsmate);
 main().catch(err => console.log(err));
 const Asyncwrap=require('./utilily/asyncwrap.js');
 const ExpressError=require('./utilily/ExpressError.js');
-const listing=require('./routes/listings.js');
-const review=require('./routes/reviews.js');
+const listingroute=require('./routes/listings.js');
+const reviewroute=require('./routes/reviews.js');
+const userroute=require('./routes/user.js');
 const session = require('express-session');
 const flash=require('connect-flash');
+const passport=require('passport');
+const LocalStrategy=require('passport-local');
+const User=require('./model/user.js');
 async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
 }
@@ -37,17 +41,46 @@ app.listen(port,()=>
     console.log(`server listening at port ${port}`);
 });
 
+//authentication 
+
 app.use(session(sessionoption));
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());//using session with passport so that do not needto logoin in every page
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());//store the user info when the session start
+passport.deserializeUser(User.deserializeUser());//remove the info when the session ends
+
+
+
+
+
+// use for message flash massages
+
 app.use((req,res,next)=>
 {
      res.locals.success=req.flash('success');
-    res.locals.err=req.flash('err');
+    res.locals.error=req.flash('error');
      next();
 
 });
-app.use('/listings',listing);
-app.use('/listings/:id/review',review);
+/*
+app.get("/demouser",async(req,res)=>
+{
+  let fakeuser=new User({
+    email:"tamojit@gmail.com",
+    username:'tamojit99',
+   
+  });
+let register=await User.register(fakeuser,"hello"); // this will save the user in the dasebase with this password
+res.send(register);
+});
+*/
+
+
+app.use('/listings',listingroute);
+app.use('/listings/:id/review',reviewroute);
+app.use('/',userroute);
 app.all(/.*/,(req,res,next)=>
 {
     return next(new ExpressError(404,"Page not found"));
