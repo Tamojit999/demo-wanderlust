@@ -12,6 +12,9 @@
                 <img src="<%= data.image.url %>" class="card-img-top show-img mt-3" alt="listing image">
                 <div class="card-body">
                     <div class="card-text mt-3">
+                        <p>
+                           owned by <%= data.owner.username %>
+                        </p>
 
                         <p>
                             <%= data.description %>
@@ -29,15 +32,20 @@
             </div>
 
             <!-- Buttons aligned with card -->
+             <% if(curr&&data.owner._id.equals(curr._id)){ %>
+           
             <div class="d-flex justify-content-between mt-3">
                 <a href="/listings/<%= data._id %>/edit"><button class="btn btn-outline-info">Edit</button></a>
                 <form method="post" action="/listings/<%= data._id %>?_method=DELETE">
                     <button class="btn btn-outline-danger">Delete</button>
                 </form>
             </div>
-
+            <% } %>
+        
+            
             <div class="col-8 offset-2 mb-3">
                 <hr>
+                <% if(curr){ %>
                 <h2>leave you review</h2>
                 <form action="/listings/<%= data._id %>/review" method="post" novalidate class="needs-validation">
                     <div class="mb-3 mt-3">
@@ -53,20 +61,26 @@
                     <button class="btn btn-outline-success">submit</button>
                     <hr>
                 </form>
+                <% } %>
+
+
+
                     <h4>All reviews</h4>
-                    <div class="row">
+                    <div class="row ">
                         <% for(let r of data.review){ %>
                             <div class="card col-5 ms-3 mb-3">
                                 <div class="card-body">
-                                    <h5 class="card-title">Tamojit</h5>
+                                    <h5 class="card-title"><b>@<%=r.auther.username %></b></h5>
                                     <p class="card-text">
                                         <%= r.comment %>
                                     </p>
                                     <p class="card-text">Rating: <%= r.rating %>
                                     </p>
+                                    <% if(curr&&r.auther._id.equals(curr._id)){ %>
                                     <form action="/listings/<%= data._id%>/review/<%=r._id%>?_method=DELETE" method="POST" class="mb-3">
                                         <button class="btn btn-dark btn-sm ">Delete</button>
                                     </form>
+                                    <% } %>
                                 </div>
 
                                 

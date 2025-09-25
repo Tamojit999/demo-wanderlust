@@ -38,7 +38,12 @@ const listingschema = new mongoose.Schema(
 
 
             }
-        ]
+        ],
+        owner:{
+             type: mongoose.Schema.Types.ObjectId,
+            ref:"User"
+
+        }
     }
 );
 listingschema.post('findOneAndDelete',async(listing)=>

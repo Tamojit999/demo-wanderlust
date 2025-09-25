@@ -13,7 +13,6 @@ app.use(methodOverride('_method'));
 const ejsmate = require('ejs-mate');
 app.engine('ejs',ejsmate);
 main().catch(err => console.log(err));
-const Asyncwrap=require('./utilily/asyncwrap.js');
 const ExpressError=require('./utilily/ExpressError.js');
 const listingroute=require('./routes/listings.js');
 const reviewroute=require('./routes/reviews.js');
@@ -61,6 +60,7 @@ app.use((req,res,next)=>
 {
      res.locals.success=req.flash('success');
     res.locals.error=req.flash('error');
+    res.locals.curr=req.user;
      next();
 
 });
