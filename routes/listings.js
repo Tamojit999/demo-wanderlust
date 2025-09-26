@@ -8,14 +8,15 @@ router
 .route('/')
 .get(Asyncwrap(listingcontroller.index))
 .post(validatelisting, Asyncwrap(listingcontroller.createlisting));
+//create get
+router.get('/new',isLoginedIn,listingcontroller.rendernewform);
 //show,delete,update
 router
 .route('/:id')
 .get(Asyncwrap(listingcontroller.showlisting))
 .put(isLoginedIn,isowner, validatelisting, Asyncwrap(listingcontroller.updatelisting))
 .delete(isLoginedIn,isowner,Asyncwrap(listingcontroller.deletelisting));
-//create get
-router.get('/new',isLoginedIn,listingcontroller.rendernewform);
+
 //edit
 router.get('/:id/edit',isLoginedIn,isowner,Asyncwrap(listingcontroller.editlisting));
 
