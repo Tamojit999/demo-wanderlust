@@ -232,3 +232,8 @@ font-size: 1.8rem;
   margin-bottom: 1rem;
   
 }
+#map
+{
+    height: 350px;
+    width: 600px;
+}
