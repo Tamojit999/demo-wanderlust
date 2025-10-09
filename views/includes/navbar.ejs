@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-md bg-body-light  sticky-top">
   <div class="container-fluid">
 
@@ -52,7 +53,7 @@
         </li>
 
 
-        <% if(!curr){ %>
+        <% if(typeof curr === 'undefined' || !curr){ %>
           <li class="nav-item">
             <a class="nav-link" href="/signup">Register</a>
           </li>
