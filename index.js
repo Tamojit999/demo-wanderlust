@@ -23,7 +23,7 @@ const dburl =process.env.ATLASDB_URL;
 // --- Database connection ---
 async function main() {
   await mongoose.connect(dburl);
-  console.log("✅ Database connected");
+ 
 }
 main().catch(err => console.log(err));
 
@@ -45,7 +45,7 @@ const store= MongoStore.create({
    
 
 });
-store.on("error",()=>
+store.on("error",(err)=>
 {
   console.log("error in mongo session store",err);
 });
