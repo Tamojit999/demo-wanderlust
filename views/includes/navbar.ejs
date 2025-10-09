@@ -53,28 +53,23 @@
         </li>
 
 
-        <% if(!curr){ %>
+        
           <li class="nav-item">
             <a class="nav-link" href="/signup">Register</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
-          <% }else{%>
+          
 
            
               <li class="nav-item">
                 <a href="/profile" style="display: inline-block;">
-                  <img src="<%= curr.image?.url || '/images/default.jpg' %>" alt="<%= curr.username %>" style="
-            width: 40px; 
-            height: 40px; 
-            border-radius: 50%; 
-            object-fit: cover; 
-            border: 2px solid #ff385c; ">
+                  <i class="fa-solid fa-user"></i>
                 </a>
               </li>
 
-              <% } %>
+            
 
       </ul>
     </div>
