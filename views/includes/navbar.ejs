@@ -53,16 +53,16 @@
         </li>
 
 
-        <% if(typeof curr === 'undefined' || !curr){ %>
+        <% if(!curr){ %>
           <li class="nav-item">
             <a class="nav-link" href="/signup">Register</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
-          <% } %>
+          <% }else{%>
 
-            <% if(curr){ %>
+           
               <li class="nav-item">
                 <a href="/profile" style="display: inline-block;">
                   <img src="<%= curr.image?.url || '/images/default.jpg' %>" alt="<%= curr.username %>" style="
