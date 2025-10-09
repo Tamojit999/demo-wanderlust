@@ -1,0 +1,26 @@
+<%- layout('./layouts/boilerplate') %>
+
+<div class="customers-container">
+
+  <h1 class="page-title">My Customers</h1>
+
+  <% if (allcustomers.length === 0) { %>
+    <div class="empty-state">
+      <p class="empty-text">No customers yet.</p>
+    </div>
+  <% } else { %>
+    <div class="customers-grid">
+      <% allcustomers.forEach(c => { %>
+        <div class="customer-card">
+          <div class="customer-info">
+            <h3 class="customer-name"><%= c.customerName %></h3>
+            <p class="customer-email"><%= c.customerEmail %></p>
+          </div>
+          <div class="listing-info">
+            <p class="listing-title">Booked: <strong><%= c.listingTitle %></strong></p>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>

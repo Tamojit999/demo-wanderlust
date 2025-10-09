@@ -1,0 +1,61 @@
+<%- layout('./layouts/boilerplate') %>
+
+<div class="container mt-5" id="profile">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+
+      <div class="card profile-card shadow-lg border-0 rounded-4 p-4">
+
+        <!-- Profile Image -->
+        <div class="text-center mb-4">
+          <img src="<%= user.image && user.image.url ? user.image.url : '/images/default.jpg' %>"
+               class="profile-img rounded-circle shadow-sm"
+               alt="Profile Picture">
+        </div>
+
+        <!-- User Info -->
+        <div class="text-center mb-3">
+          <h2 class="username fw-bold mb-2">
+            <%= user.username %>
+          </h2>
+          <p class="text-muted fs-6"><i class="bi bi-envelope"></i> <%= user.email %></p>
+          <p class="text-muted fs-6"><i class="bi bi-geo-alt"></i> <%= user.location || 'Location not provided' %></p>
+          <p class="text-muted fs-6"><i class="bi bi-telephone"></i> <%= user.phone_no || 'Phone not provided' %></p>
+          <p class="text-muted fs-6"><i class="bi bi-calendar"></i> <%= user.dateofbirth ? user.dateofbirth.toDateString() : 'Date of birth not provided' %></p>
+        </div>
+
+        <hr class="my-4">
+
+        <!-- Bio -->
+        <div class="text-center mb-4">
+          <h4 class="fw-semibold mb-3">About <%= user.username %></h4>
+          <p class="text-muted fs-6 px-3">
+            <%= user.bio && user.bio.trim() !== '' ? user.bio : 'This host has not added a bio yet.' %>
+          </p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="d-flex justify-content-center flex-wrap gap-3">
+          <a class="btn profile-btn reviews" href="/listings/<%= user._id %>/review">
+            <i class="bi bi-star"></i> Reviews
+          </a>
+          
+          <a class="btn profile-btn listings" href="/listings/<%= user._id %>/user">
+            <i class="bi bi-house-door"></i> Listings
+          </a>
+          <a class="btn profile-btn reviews" href="/listings/<%= user._id %>/customers">
+            <i class="bi bi-person"></i> Customers
+          </a> 
+           <a class="btn profile-btn reviews" href="/listings/<%= user._id %>/mybooking">
+              <i class="bi bi-book"></i> Bookings
+          </a>
+          <a class="btn profile-btn logout" href="/logout" style="color: red;">
+            <i class="bi bi-box-arrow-right" style="color: red;"></i> Logout
+          </a>
+          
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

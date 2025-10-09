@@ -1,0 +1,59 @@
+<%- layout('./layouts/boilerplate') %>
+
+<div class="profile-reviews-container">
+  <h2 class="profile-page-title text-center mt-3 mb-3">Your Reviews</h2>
+
+  <% if (reviews && reviews.length > 0) { %>
+    <div class="profile-reviews-grid">
+      <% reviews.forEach(r => { %>
+        <div class="profile-review-card" id="profile-review-<%= r._id %>">
+
+          <!-- Optional Listing Image -->
+          <% if(r.listing?.image?.url){ %>
+            <div class="profile-review-image">
+              <img src="<%= r.listing.image.url %>" alt="Listing Image">
+            </div>
+          <% } %>
+
+          <!-- Review Content -->
+          <div class="profile-review-content">
+
+            <!-- Header: title, author, rating -->
+            <div class="profile-review-header">
+              <h4 class="profile-listing-title"><%= r.listing?.title || 'Untitled' %></h4>
+              <h5 class="profile-review-author">@<%= r.auther?.username || 'Unknown' %></h5>
+              <div class="profile-review-rating">
+                <% for(let i = 1; i <= 5; i++){ %>
+                  <% if(i <= r.rating){ %>
+                    <i class="fas fa-star filled"></i>
+                  <% } else { %>
+                    <i class="far fa-star"></i>
+                  <% } %>
+                <% } %>
+              </div>
+            </div>
+
+            <!-- Comment -->
+            <p class="profile-review-comment"><%= r.comment %></p>
+
+            <!-- Action Buttons -->
+            <div class="profile-review-actions">
+              <% if(r.listing){ %>
+                <a href="/listings/<%= r.listing._id %>" class="profile-view-btn">View</a>
+
+                <form action="/listings/<%= r.listing._id %>/review/<%= r._id %>?_method=DELETE" method="POST" class="profile-delete-form">
+                  <button class="profile-delete-btn" type="submit">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </form>
+              <% } %>
+            </div>
+
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p class="profile-no-reviews">You have not left any reviews yet.</p>
+  <% } %>
+</div>

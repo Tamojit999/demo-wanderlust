@@ -1,8 +1,6 @@
-if (process.env.NODE_ENV !== "production") {
-  require('dotenv').config();
-}
-
+require('dotenv').config();
 const express = require('express');
+
 const app = express();
 const port = 8080;
 const mongoose = require('mongoose');
@@ -20,8 +18,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./model/user.js');
 
-// ✅ Put dburl BEFORE calling main()
-const dburl = process.env.ATLASDB_URL;
+const dburl =process.env.ATLASDB_URL;
 
 // --- Database connection ---
 async function main() {
@@ -36,6 +33,7 @@ app.set("views", path.join(__dirname, "views"));
 app.engine('ejs', ejsmate);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+
 app.use(methodOverride('_method'));
 
 const store= MongoStore.create({
@@ -57,7 +55,6 @@ const sessionoption = {
   resave: false,
   saveUninitialized: true,
   cookie: {
-    expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // 7 days
     maxAge: 1000 * 60 * 60 * 24 * 7,
     httpOnly: true
   }
@@ -99,7 +96,9 @@ app.use((err, req, res, next) => {
   res.status(status).render('Errors.ejs', { err });
 });
 
+
 // --- Server listen ---
 app.listen(port, () => {
   console.log(`🚀 Server running at http://localhost:${port}`);
 });
+

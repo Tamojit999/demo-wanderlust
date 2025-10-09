@@ -1,0 +1,36 @@
+<% layout('./layouts/boilerplate') -%>
+
+<div class="my-bookings-container">
+  <h2 class="my-bookings-title">My Bookings</h2>
+
+  <% if (allListings.length === 0) { %>
+    <div class="no-bookings">
+      <img src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" alt="No bookings" class="no-bookings-img">
+
+      <p>You haven't booked any listings yet.</p>
+      <a href="/listings" class="explore-btn">Explore Listings</a>
+    </div>
+  <% } else { %>
+    <div class="bookings-grid">
+      <% allListings.forEach(listing => { %>
+        <div class="booking-card">
+          <div class="booking-image">
+            <img src="<%= listing.image?.url || '/images/default-listing.jpg' %>" alt="<%= listing.title %>">
+          </div>
+
+          <div class="booking-details">
+            <h3 class="booking-title"><%= listing.title %></h3>
+            <p class="booking-location"><%= listing.location %></p>
+            <p class="booking-price">₹<%= listing.price %> / night</p>
+
+            <a href="/listings/<%= listing._id %>" class="view-btn">View Listing</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>
+
+<style>
+
+</style>

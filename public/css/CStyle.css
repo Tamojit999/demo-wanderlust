@@ -1,5 +1,12 @@
 /* Airbnb-like form styling */
 
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; 
+}
+
 body
 {
     display: flex;
@@ -130,12 +137,7 @@ font-family: "Plus Jakarta Sans", sans-serif !important;
         padding: 12px;
     }
 }
-.fa-compass
-{
-    color: #E31C5F ;
-    font-size: 4rem;
-    
-}
+
 .navbar
 {
     height: 6rem;
@@ -148,41 +150,7 @@ font-family: "Plus Jakarta Sans", sans-serif !important;
     padding: 10px !important;
    
 }
-.f-info-links a
-{
-    text-decoration: none;
-    color:#222;
-    font-size: large;
-    margin:0.2rem;
-    
-}
-.f-info-links a:hover
-{
-    text-decoration: underline;
-}
-.f-info
-{
-    text-align: center;
-    display: flex;
-    height: 8rem;
-    background-color:#ddd;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: space-evenly;
-    
 
-}
-.f-info-links,.f-info-socials
-{
-
-    width: 100%;
-}
-
-.f-info-socials i{
- margin: 0.5rem;
-font-size: 1.8rem;
-
-}
 .listing-card{
     border: none !important;
     margin-bottom: 1rem;
@@ -236,4 +204,1085 @@ font-size: 1.8rem;
 {
     height: 350px;
     width: 600px;
+}/* Form wrapper */
+
+.native-select {
+  max-width: 300px;
+  font-family: 'Airbnb Cereal', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  position: relative;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Style the select */
+.native-select select {
+  width: 100%;
+  padding: 6px 20px;
+  padding-right: 40px; /* space for arrow */
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  font-size: 15px;
+  color: #222;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 2px;
+}
+
+/* Hover & focus states */
+.native-select select:hover {
+  border-color: #aaa;
+}
+
+.native-select select:focus {
+  border-color: #222;
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.08);
+}
+
+/* Custom dropdown arrow */
+.native-select::after {
+  content: "▾";
+  position: absolute;
+  top: 52%;
+  right: 14px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 14px;
+  color: #555;
+}
+/* Pagination Container */
+.pagination-nav {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  font-family: 'Airbnb Cereal', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* List reset */
+.pagination {
+  list-style: none;
+  display: inline-flex;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+/* Page Item */
+.page-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Page Link - center numbers perfectly */
+.page-link {
+  display: flex;               /* flex to center content */
+  align-items: center;         /* vertical center */
+  justify-content: center;     /* horizontal center */
+  min-width: 40px;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: #fff;
+  color: #222;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.06);
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+  line-height: normal;         /* remove line-height issues */
+  text-align: center;
+}
+
+/* Hover Effect */
+.page-link:hover,
+.page-link:focus {
+  background: #f8fafc;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 24, 40, 0.08);
+  outline: none;
+  border-color: #e6eef8;
+}
+
+/* Active Page */
+.page-item.active .page-link {
+  background: #ff385c; /* Airbnb pink */
+  color: #fff;
+  border-color: rgba(255, 56, 92, 0.8);
+  box-shadow: 0 4px 14px rgba(255, 56, 92, 0.2);
+  cursor: default;
+  transform: none;
+}
+
+/* Disabled Pages */
+.page-item.disabled .page-link,
+.page-item.disabled .page-link:hover {
+  background: #fff;
+  color: #cbd5e1;
+  border-color: #e2e8f0;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Ellipsis */
+.page-item.ellipsis .page-ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  font-size: 16px;
+  color: #64748b;
+}
+
+/* Responsive small screens */
+@media (max-width: 480px) {
+  .pagination { gap: 6px; }
+  .page-link { min-width: 36px; height: 36px; font-size: 13px; padding: 0 10px; border-radius: 10px; }
+}
+.listing-card:hover {
+  transform: translateY(-3px);
+  transition: 0.3s ease;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+}
+.listing-card {
+  cursor: pointer;
+}
+
+/* profile css*/
+.profile-card {
+  background: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+}
+
+.profile-img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+}
+
+.username {
+  font-size: 1.6rem;
+  color: #333;
+}
+
+.btn {
+  border-radius: 30px; /* rounded Airbnb-style buttons */
+  font-size: 0.95rem;
+}
+
+
+/* owner page*/
+/* Profile Card */
+.owner-profile {
+  background: #fff;
+  border-radius: 20px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.owner-profile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 5px solid #f8f9fa;
+}
+
+.username {
+  font-size: 2rem;
+  color: #222;
+}
+
+/* Stats Section */
+#ownerpage .row .col h5 {
+  font-size: 1.4rem;
+  color: #111;
+}
+.stats-row .stat-card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  width: 140px; /* uniform width */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stats-row .stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.stats-row .stat-card h4 {
+  color: #222;
+  font-size: 1.4rem;
+}
+
+.stats-row .stat-card p {
+  color: #666;
+  font-size: 0.85rem;
+  margin-bottom: 0;
+}/* Page Container */
+.page-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 15px;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+}
+
+
+.owner-link-wrapper {
+    text-decoration: none;
+    color: inherit;
+}
+
+.owner-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.owner-section img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #FF5A5F;
+}
+
+.owner-badge {
+    background-color: #FF5A5F;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: inline-block;
+}
+
+/*profile reviews*/
+.profile-reviews-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content:space-evenly;
+}
+
+/* Individual Card */
+.profile-review-card {
+  display: flex;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  overflow: hidden;
+  width: 100%;
+  max-width: 350px;
+  height: 150px; /* Fixed height */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+
+/* Image */
+.profile-review-image {
+  width: 100px;
+  height: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.profile-review-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Content */
+.profile-review-content {
+  padding: 0.8rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  height: 100%;
+}
+
+/* Titles & Author */
+.profile-listing-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ 
+}
+
+.profile-review-author {
+  font-size: 1rem;
+  color: #555;
+  margin: 0.4rem 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Rating */
+.profile-review-rating {
+  color: #ffb400;
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+  margin-top: 1rem;
+}
+
+/* Comment */
+.profile-review-comment {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Fixed number of lines */
+  -webkit-box-orient: vertical;
+}
+
+/* Delete Button */
+.profile-delete-btn {
+  background-color: #ff385c;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.profile-delete-btn:hover {
+  background-color: #e63950;
+}
+
+.profile-review-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 0.4rem;
+}
+
+.profile-view-btn {
+  background-color: #008489;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.profile-view-btn:hover {
+  background-color: #006f72;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-review-card {
+    flex-direction: column;
+    max-width: 100%;
+    height: 180px; /* Slightly taller for stacked layout */
+  }
+
+  .profile-review-image {
+    width: 100%;
+    height: 100px;
+  }
+}
+
+/* ============================== */
+/* ===== PAGE CONTAINER ==========*/
+/* ============================== */
+.unique-page-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: 'Inter', sans-serif;
+  color: #222;
+}
+
+/* ============================== */
+/* ===== LISTING TITLE ============*/
+/* ============================== */
+.unique-listing-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #111;
+}
+
+/* ============================== */
+/* ===== LISTING IMAGE CARD =======*/
+/* ============================== */
+.unique-listing-image-card {
+  width: 100%;
+  height: 400px;               /* fixed card height */
+  overflow: hidden;
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+  position: relative;          /* for overlay elements if needed */
+}
+
+.unique-listing-image-card img {
+  width: 100%;
+  height: 100%;                /* fill the entire card */
+  object-fit: cover;           /* crop to fill without gaps */
+  object-position: center;     /* keep image centered */
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+/* Optional hover effect */
+.unique-listing-image-card img:hover {
+  transform: scale(1.05);
+}
+
+/* ============================== */
+/* ===== LISTING INFO CARD ========*/
+/* ============================== */
+.unique-listing-info-card {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.unique-listing-info-card .unique-owner-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.unique-owner-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid #FF5A5F ;
+}
+
+
+.unique-owner-badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #FF5A5F; /* Airbnb red */
+  padding: 2px 8px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Listing Details */
+.unique-listing-info-card i {
+  color: #f5f4f4;
+  margin-right: 4px;
+}
+.unique-action-buttons {
+  display: flex;
+  flex-wrap: wrap;           /* allows buttons to wrap on smaller screens */
+  gap: 8px;
+  margin-top: 10px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Make forms align properly */
+.unique-action-buttons form {
+  display: flex;
+}
+
+/* Keep button styles but remove hover */
+.unique-edit-btn,
+.unique-delete-btn {
+  font-weight: 600;
+  padding: 0.7rem 1.4rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Edit Button */
+.unique-edit-btn {
+  color: #e3eeee;
+  background-color: #008489;
+}
+
+/* Delete Button */
+.unique-delete-btn {
+  color: #f8f6f6;
+  background-color: #ff5a5f;
+}
+
+
+/* ============================== */
+/* ===== MAP SECTION =============*/
+/* ============================== */
+.unique-map-section h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+#map {
+  width: 100%;
+  height: 300px;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+}
+
+/* ============================== */
+/* ===== REVIEW SECTION ==========*/
+/* ============================== */
+.unique-review-section {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+  margin-bottom: 2rem;
+}
+
+.unique-review-section h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.unique-review-textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+.unique-review-textarea:focus {
+  outline: none;
+  border-color: #FF5A5F;
+}
+
+.unique-submit-btn {
+  background-color: #FF5A5F;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.7rem 1.4rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.15s ease;
+}
+
+.unique-submit-btn:hover {
+  background-color: #e63950;
+  transform: translateY(-2px);
+}
+
+/* ============================== */
+/* ===== REVIEWS LIST ============*/
+/* ============================== */
+.unique-review-list h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.unique-reviews-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.unique-review-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.unique-review-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.unique-review-user-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.unique-review-username {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.unique-review-rating i {
+  color: #FFB400;
+  margin-right: 2px;
+}
+
+.unique-review-text {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.3;
+}
+
+.unique-no-reviews {
+  color: #777;
+  font-style: italic;
+}
+
+/* ============================== */
+/* ===== RESPONSIVE ==============*/
+/* ============================== */
+@media (max-width: 768px) {
+  .unique-listing-title {
+    font-size: 1.6rem;
+  }
+
+  .unique-listing-image-card {
+    max-height: 300px;
+  }
+
+  .unique-listing-info-card {
+    padding: 1.5rem;
+  }
+
+  .unique-owner-avatar {
+    width: 42px;
+    height: 42px;
+    
+    
+  }
+
+  .unique-review-textarea {
+    font-size: 0.9rem;
+  }
+
+  .unique-submit-btn, .unique-edit-btn, .unique-delete-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+/* Full screen center alignment */
+.checkout-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: #f7f7f7;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Card style */
+.checkout-card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  width: 400px;
+  text-align: center;
+}
+
+/* Listing title */
+.listing-title {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+/* Listing amount */
+.listing-amount {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+/* Pay button */
+.pay-btn {
+  background-color: #FF5A5F;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pay-btn:hover {
+  background-color: #e14f52;
+}
+
+/* Footer text */
+.footer-text {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/*my booking page*/
+.my-bookings-container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.my-bookings-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.no-bookings {
+  text-align: center;
+  color: #555;
+}
+
+.no-bookings-img {
+  width: 200px;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+.explore-btn {
+  background-color: #ff385c;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.bookings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.booking-card {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: white;
+  transition: transform 0.2s ease;
+}
+
+.booking-card:hover {
+  transform: scale(1.02);
+}
+
+.booking-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.booking-details {
+  padding: 1rem;
+}
+
+.booking-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.booking-location {
+  color: #777;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.booking-price {
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.view-btn {
+  display: inline-block;
+  background-color: #ff385c;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.view-btn:hover {
+  background-color: #e03151;
+}
+
+.customers-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.empty-img {
+  width: 180px;
+  opacity: 0.8;
+}
+
+.empty-text {
+  color: #777;
+  font-size: 1rem;
+  margin-top: 12px;
+}
+
+/* Customers List */
+.customers-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* Customer Card */
+.customer-card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 16px;
+  transition: background-color 0.2s ease;
+}
+
+.customer-card:hover {
+  background-color: #f3f3f3;
+}
+
+/* Customer Info */
+.customer-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.customer-email {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* Listing Info */
+.listing-info {
+  border-top: 1px solid #eee;
+  margin-top: 10px;
+  padding-top: 8px;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.listing-info strong {
+  color: #ff385c; /* Airbnb accent color */
+}
+
+
+/* Container for all filters */
+/* Default (desktop) layout */
+#filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin: 20px auto;
+}
+
+
+
+.filter a {
+  text-decoration: none;
+  color: #333;
+}
+
+.filter i {
+  font-size: 20px;
+  color: #555;
+}
+
+.filter p {
+  font-size: 12px;
+  margin-top: 3px;
+}
+.filter:hover i {
+  color: #000;
+}
+
+/* ✅ Mobile layout: scrollable row with smaller icons/text */
+@media (max-width: 768px) {
+  #filter {
+    display: flex;
+    flex-wrap: nowrap;        /* No wrapping — all in one line */
+    overflow-x: auto;         /* Scroll horizontally */
+    gap: 16px;
+    padding: 10px;
+    justify-content: flex-start;
+    scrollbar-width: none;    /* Hide scrollbar (for Firefox) */
+  }
+
+  #filter::-webkit-scrollbar {
+    display: none;            /* Hide scrollbar (for Chrome, Safari) */
+  }
+
+  .filter {
+    flex: 0 0 auto;           /* Prevent shrinking */
+    text-align: center;
+  }
+
+  .filter i {
+    font-size: 15px;          /* Smaller icons */
+  }
+
+  .filter p {
+    font-size: 10px;          /* Smaller text */
+  }
+}
+footer {
+  position: relative;
+  width: 100vw; /* ✅ Full viewport width */
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw; /* ✅ Override any container constraints */
+  margin-right: -50vw;
+  
+  background-color: #f8f8f8;
+  padding: 25px 0;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: #555;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 50px;
+}
+
+.f-info {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.f-info-socials a {
+  color: #ff385c;
+  font-size: 1.5rem;
+  margin: 0 10px;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.f-info-socials a:hover {
+  transform: scale(1.2);
+  color: #e13250;
+}
+
+.f-info-links a {
+  color: #555;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.f-info-links a:hover {
+  color: #ff385c;
+}
+.terms-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 2rem;
+}
+
+.terms-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #ff385c;
+}
+
+.terms-content h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.terms-content p {
+    margin-top: 0.5rem;
+    line-height: 1.6;
+}
+
+.terms-content a {
+    color: #ff385c;
+    text-decoration: none;
+}
+
+.terms-content a:hover {
+    text-decoration: underline;
 }

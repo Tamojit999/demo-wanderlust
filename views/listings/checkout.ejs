@@ -1,0 +1,42 @@
+<% layout('./layouts/boilerplate') -%>
+<body>
+  <div class="checkout-container">
+    <div class="checkout-card">
+      <h2 class="listing-title"><%= listing.title %></h2>
+      <p class="listing-amount">Amount: <strong>₹<%= totalPrice %></strong></p>
+      <button id="payBtn" class="pay-btn">Pay Now</button>
+      <p class="footer-text">Secure payment powered by Razorpay</p>
+    </div>
+  </div>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    const payBtn = document.getElementById('payBtn');
+    payBtn.addEventListener('click', () => {
+      var options = {
+        key: "<%= key %>",
+        amount: "<%= totalPrice*100 %>",
+        currency: "<%= order.currency %>",
+        name: "<%= listing.title %>",
+        description: "Payment for listing",
+        order_id: "<%= order.id %>",
+        callback_url: '/listings/<%= listing._id %>/payment-verification',
+        theme: {
+          color: '#FF5A5F',
+        },
+        /*
+        prefill: {
+          name: 'Gaurav Kumar',
+          email: 'gaurav.kumar@example.com',
+          contact: '9999999999'
+        },*/
+        /*handler: function(response){
+          alert("Payment Successful! ID: " + response.razorpay_payment_id);
+          // Optional: send response to backend for verification
+        }*/
+      };
+      var rzp = new Razorpay(options);
+      rzp.open();
+    });
+  </script>
+</body>

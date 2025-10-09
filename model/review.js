@@ -1,5 +1,7 @@
 const { required } = require("joi");
+const Listing=require('../model/listing.js');
 const mongoose = require("mongoose");
+
 const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema({
@@ -18,6 +20,11 @@ const reviewSchema = new Schema({
     auther: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
+
+    },
+    listing: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Listing"
 
     }
 });

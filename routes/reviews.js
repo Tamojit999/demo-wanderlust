@@ -5,6 +5,12 @@ const reviewscontroller=require('../controller/reviews.js')
 const {isLoginedIn,validatereview,isreviewauther}=require('../middleware.js');
 //create
 router.post('/',isLoginedIn,validatereview,Asyncwrap(reviewscontroller.create_reviews));
-module.exports=router;
+
+
+
 //delete review
 router.delete('/:reviewId',isLoginedIn,isreviewauther,Asyncwrap(reviewscontroller.deletereviews));
+
+
+
+module.exports=router;

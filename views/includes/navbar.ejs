@@ -1,48 +1,80 @@
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+<nav class="navbar navbar-expand-md bg-body-light  sticky-top">
   <div class="container-fluid">
-     <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass"></i></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+    <!-- Brand -->
+    <a class="navbar-brand" href="/listings" style="text-decoration: none;">
+      <div class="logo" style="
+      display: flex; 
+      align-items: center; 
+      gap: 8px; 
+      padding: 4px 8px; 
+      border-radius: 8px; 
+      cursor: pointer;">
+
+        <!-- Icon -->
+        <i class="bi bi-geo-alt" style="
+        color: #ff385c; 
+        font-size: 2.5rem;
+        
+      "></i>
+
+        <!-- Brand text -->
+        <span class="script nav-logo" style="
+        font-weight: 700; 
+        font-size: 2.5rem; 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        color: #ff385c;
+      
+      ">WanderLust</span>
+      </div>
+    </a>
+
+
+
+    <!-- Toggler for mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        
-        <li class="nav-item">
-          <a class="nav-link" href="/listings">Explore</a>
-        </li>
-        
-      </ul>
-    </div>
-    <div class="collapse navbar-collapse" id="navbarNav" >
+
+
+    <!-- Collapse content with white background -->
+    <div class="collapse navbar-collapse bg-white p-3 rounded" id="navbarNav">
+
+
+
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+          <a class="nav-link" href="/listings"><i class="fa-regular fa-compass" style="color: #e61e7f;"></i> Explore</a>
         </li>
-        
-      </ul>
-      
-    </div>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/listings/new">Add new Listing</a>
+        <li class="nav-item" style="margin-right: 20px;">
+          <a class="nav-link" href="/listings/new"> <i class="fa-regular fa-square-plus" style="color: #e61e7f;"></i> Become a host</a>
         </li>
+
+
         <% if(!curr){ %>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/signup">SignUp</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
-        </li>
-      <%}%>
-      <% if(curr){ %>
-        <li class="nav-item">
-          <a class="nav-link" href="/logout">Logout</a>
-        </li>
-        <% } %>
+          <li class="nav-item">
+            <a class="nav-link" href="/signup">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <% } %>
+
+            <% if(curr){ %>
+              <li class="nav-item">
+                <a href="/profile" style="display: inline-block;">
+                  <img src="<%= curr.image?.url || '/images/default.jpg' %>" alt="<%= curr.username %>" style="
+            width: 40px; 
+            height: 40px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 2px solid #ff385c; ">
+                </a>
+              </li>
+
+              <% } %>
+
       </ul>
     </div>
   </div>

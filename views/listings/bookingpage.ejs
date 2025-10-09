@@ -1,0 +1,28 @@
+<% layout('./layouts/boilerplate') -%>
+
+  <body>
+
+    
+
+     <!-- Listing Title -->
+        <div class="unique-listing-title text-center">
+            <%= listing.title %>
+        </div>
+
+    <form action="/listings/<%= listing._id %>/book/payment" method="post" novalidate class="FORM needs-validation" id="bookingForm">
+
+      <div class="mb-3">
+        <label for="bookedfrom" class="form-label">From</label>
+        <input type="date" class="form-control" id="bookedfrom" name="bookedfrom" required>
+      </div>
+<div class="mb-3">
+        <label for="bookedto" class="form-label">To</label>
+        <input type="date" class="form-control" id="bookedto" name="bookedto" required>
+      </div>
+
+
+        <button type="submit" class="newbtn">Proceed To Pay</button>
+    </form>
+
+
+  </body>
