@@ -29,10 +29,10 @@ main().catch(err => console.log(err));
 
 // --- App setup ---
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "/views"));
 app.engine('ejs', ejsmate);
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "/public")));
 
 app.use(methodOverride('_method'));
 
@@ -77,7 +77,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) => {
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
-  res.locals.curr = req.user||null;
+  res.locals.currentUser = req.user; // changed from curr to currentUser
   next();
 });
 
@@ -99,6 +99,6 @@ app.use((err, req, res, next) => {
 
 // --- Server listen ---
 app.listen(port, () => {
-  console.log(`🚀 Server running at http://localhost:${port}`);
+  console.log(`Server running at http://localhost:${port}`);
 });
 
