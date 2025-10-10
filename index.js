@@ -10,15 +10,16 @@ const path = require('path');
 const methodOverride = require('method-override');
 const ejsmate = require('ejs-mate');
 const ExpressError = require('./utilily/ExpressError.js');
-const listingroute = require('./routes/listings.js');
-const reviewroute = require('./routes/reviews.js');
-const userroute = require('./routes/user.js');
+
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./model/user.js');
+const listingroute = require('./routes/listings.js');
+const reviewroute = require('./routes/reviews.js');
+const userroute = require('./routes/user.js');
 
 const dburl =process.env.ATLASDB_URL;
 
