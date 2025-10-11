@@ -1150,7 +1150,7 @@ label {
 #filter {
   display: flex;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 40px;
   margin: 20px auto;
   
 }
