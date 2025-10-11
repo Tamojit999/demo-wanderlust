@@ -87,13 +87,16 @@ module.exports.editlisting = async (req, res) => {
   const editdata = await Listing.findById(id);
   if (!editdata) {
     req.flash('error', 'listing not found');
-    res.redirect(`/listings`);
+    return res.redirect(`/listings`);
   }
-  else {
-    let originalurl = editdata.image.url;
-    originalurl = originalurl.replace("/upload/", "/upload/h_300,w_250,c_fill/");
-    res.render('./listings/edit.ejs', { editdata, originalurl });
+  // Authorization check: only owner can edit
+  if (!req.user || !editdata.owner.equals(req.user._id)) {
+    req.flash('error', 'You are not authorized to edit this listing');
+    return res.redirect(`/listings/${id}`);
   }
+  let originalurl = editdata.image.url;
+  originalurl = originalurl.replace("/upload/", "/upload/h_300,w_250,c_fill/");
+  res.render('./listings/edit.ejs', { editdata, originalurl });
 };
 module.exports.updatelisting = async (req, res) => {
   let response = await geocodingClient.forwardGeocode({
@@ -101,7 +104,17 @@ module.exports.updatelisting = async (req, res) => {
     limit: 1
   }).send();
   let { id } = req.params;
-  const listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+  const listing = await Listing.findById(id);
+  if (!listing) {
+    req.flash('error', 'listing not found');
+    return res.redirect(`/listings`);
+  }
+  // Authorization check: only owner can update
+  if (!req.user || !listing.owner.equals(req.user._id)) {
+    req.flash('error', 'You are not authorized to update this listing');
+    return res.redirect(`/listings/${id}`);
+  }
+  Object.assign(listing, req.body.listing);
   if (typeof req.file !== 'undefined') {
     let url = req.file.path;
     let filename = req.file.filename;
@@ -116,6 +129,16 @@ module.exports.updatelisting = async (req, res) => {
 };
 module.exports.deletelisting = async (req, res) => {
   let id = req.params.id;
+  const listing = await Listing.findById(id);
+  if (!listing) {
+    req.flash('error', 'listing not found');
+    return res.redirect('/listings');
+  }
+  // Authorization check: only owner can delete
+  if (!req.user || !listing.owner.equals(req.user._id)) {
+    req.flash('error', 'You are not authorized to delete this listing');
+    return res.redirect(`/listings/${id}`);
+  }
   await Listing.findByIdAndDelete(id);
   req.flash('success', 'listing deleted');
   res.redirect('/listings');
@@ -168,7 +191,6 @@ module.exports.paymentlisting = async (req, res) => {
     const options = {
       amount: Number(totalPrice * 100), // in paise
       currency: "INR",
-      receipt: `receipt_${id}`,
     };
     const order = await instance.orders.create(options);
 
