@@ -13,9 +13,9 @@
   <script>
     const payBtn = document.getElementById('payBtn');
     payBtn.addEventListener('click', () => {
-      var options = {
+      const options = {
         key: "<%= key %>",
-        amount: "<%= totalPrice*100 %>",
+        amount: "<%= totalPrice * 100 %>", // Razorpay expects amount in paise (number, not string)
         currency: "<%= order.currency %>",
         name: "<%= listing.title %>",
         description: "Payment for listing",
@@ -24,16 +24,6 @@
         theme: {
           color: '#FF5A5F',
         },
-        /*
-        prefill: {
-          name: 'Gaurav Kumar',
-          email: 'gaurav.kumar@example.com',
-          contact: '9999999999'
-        },*/
-        /*handler: function(response){
-          alert("Payment Successful! ID: " + response.razorpay_payment_id);
-          // Optional: send response to backend for verification
-        }*/
       };
       var rzp = new Razorpay(options);
       rzp.open();
