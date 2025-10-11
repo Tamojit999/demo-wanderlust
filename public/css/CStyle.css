@@ -1152,6 +1152,7 @@ label {
   flex-wrap: wrap;
   gap: 50px;
   margin: 20px auto;
+  align-items: center;
 }
 
 
