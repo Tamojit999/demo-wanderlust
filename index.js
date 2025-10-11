@@ -10,7 +10,6 @@ const path = require('path');
 const methodOverride = require('method-override');
 const ejsmate = require('ejs-mate');
 const ExpressError = require('./utilily/ExpressError.js');
-
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
@@ -21,43 +20,45 @@ const listingroute = require('./routes/listings.js');
 const reviewroute = require('./routes/reviews.js');
 const userroute = require('./routes/user.js');
 
-const dburl =process.env.ATLASDB_URL;
+const dburl=process.env.ATLASDB_URL;
 
 // --- Database connection ---
 async function main() {
   await mongoose.connect(dburl);
+  console.log("Database connected");
  
 }
 main().catch(err => console.log(err));
 
 // --- App setup ---
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "/views"));
+app.set("views", path.join(__dirname, "views"));
 app.engine('ejs', ejsmate);
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(methodOverride('_method'));
 
-const store= MongoStore.create({
+const store = MongoStore.create({
    mongoUrl:dburl,
-   crypto:{
+    crypto:{
     secret: process.env.SECRET
-   },
-   touchAfter:24*3600,
-   
+    },
+    touchAfter:24*3600, 
+});
 
+store.on("error",function(e){
+  console.log("session store error",e);
 });
-store.on("error",(err)=>
-{
-  console.log("error in mongo session store",err);
-});
+
+
 const sessionoption = {
-  store,
+  store: store,
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
+    expire: Date.now() + 1000 * 60 * 60 * 24 * 7,
     maxAge: 1000 * 60 * 60 * 24 * 7,
     httpOnly: true
   }
