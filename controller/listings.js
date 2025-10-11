@@ -204,7 +204,7 @@ module.exports.paymentverification = async (req, res) => {
       // create booking
       const newBooking = new Booking({
         listing: listing._id,
-        customer: req.user._id,        // assuming you're using Passport.js
+        customer: req.user._id,        
         owner: listing.owner,
         paymentId: razorpay_payment_id,
         orderId: razorpay_order_id
