@@ -1152,7 +1152,14 @@ label {
   flex-wrap: wrap;
   gap: 50px;
   margin: 20px auto;
-  align-items: center;
+  
+}
+.filter {
+  text-align: center;
+  flex: 1;                    /* equal width */
+  min-width: 80px;           /* minimum width */
+  max-width: 120px;          /* maximum width */
+  cursor: pointer;
 }
 
 
