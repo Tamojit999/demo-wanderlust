@@ -913,7 +913,7 @@ label {
     font-size: 0.9rem;
   }
 
-  .unique-submit-btn, .unique-edit-btn, .unique-delete-btn {
+  .unique-submit-btn{
     width: 100%;
     justify-content: center;
   }

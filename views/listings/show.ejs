@@ -41,7 +41,7 @@
             </h4>
 
             <!-- Price -->
-            <h5 style="color: rgba(233, 75, 75, 0.897); font-weight: bolder; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"><i class="fas fa-indian-rupee-sign" style="color: black;"></i>
+            <h5 style="color: rgba(233, 75, 75, 0.897); font-weight: bolder; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"><i class="fas fa-indian-rupee-sign" style="color: rgba(233, 75, 75, 0.897);"></i>
             <%= data.price.toLocaleString("en-IN") %>/night
             </h5>
 
@@ -111,12 +111,12 @@
 
                     <div class="form-group">
                         <label for="comment" class="form-label">Add a comment</label>
-                        <textarea name="review[comment]" id="comment" rows="5" cols="40" class="form-control"
+                        <textarea name="review[comment]" id="comment" rows="5"  class="form-control"
                             required></textarea>
                         <div class="invalid-feedback">Please add a comment!</div>
                     </div>
 
-                    <button class="unique-submit-btn" type="submit">Submit</button>
+                    <button class="unique-submit-btn mt-2" type="submit" >Submit</button>
                 </form>
             </div>
             <% } %>
