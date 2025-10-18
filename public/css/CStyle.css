@@ -908,6 +908,13 @@ label {
     
     
   }
+   .unique-edit-btn,
+  .unique-delete-btn {
+    width: 100%;              /* Make buttons full width */
+    padding: 0.9rem 1rem;     /* Slightly larger for touch screens */
+    font-size: 0.95rem;       /* Adjust text size */
+    margin-bottom: 0.5rem;    /* Space between stacked buttons */
+  }
 
   .unique-review-textarea {
     font-size: 0.9rem;
