@@ -1,20 +1,20 @@
 <% layout('./layouts/boilerplate') -%>
-<h1 class="text-center" style="color: #ff385c;"   >Register in Wanderlust</h1>
+<h1 class="text-center" style="color: #ff385c;">Begin Your WanderLust</h1>
 
     <form action="/signup" method="post" novalidate class="FORM needs-validation" enctype="multipart/form-data">
       
       <div class="mb-3">
-        <label for="username" class="form-label">Username:</label>
+        <label for="username" class="form-label">Username</label>
         <input type="text" class="form-control" id="username" name="username" required>
       </div>
 
       <div class="mb-3">
-        <label for="password" class="form-label">Password:</label>
+        <label for="password" class="form-label">Password</label>
         <input type="password" class="form-control" id="password" name="password" required>
       </div>
 
       <div class="mb-3">
-        <label for="email" class="form-label">Email:</label>
+        <label for="email" class="form-label">Email</label>
         <input type="email" class="form-control" id="email" name="email" required>
       </div>
 
@@ -23,17 +23,17 @@
       <input type="file" class="form-control" id="image" name="image" required>
 
       <div class="mb-3">
-        <label for="phone_no" class="form-label">Phone Number:</label>
+        <label for="phone_no" class="form-label">Phone Number</label>
         <input type="tel" class="form-control" id="phone_no" name="phone_no" required pattern="[0-9]{10}" placeholder="Enter your phone number">
       </div>
 
       <div class="mb-3">
-        <label for="dateofbirth" class="form-label">Birth Date:</label>
+        <label for="dateofbirth" class="form-label">Birth Date</label>
         <input type="date" class="form-control" id="dateofbirth" name="dateofbirth" required>
       </div>
 
       <div class="mb-3">
-        <label for="location" class="form-label">Location:</label>
+        <label for="location" class="form-label">Location</label>
         <input type="text" class="form-control" id="location" name="location" required placeholder="Enter your city or address">
       </div>
 
