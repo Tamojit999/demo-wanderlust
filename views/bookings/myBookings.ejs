@@ -3,33 +3,45 @@
 <div class="my-bookings-container">
   <h2 class="my-bookings-title">My Bookings</h2>
 
-  <% if (allListings.length === 0) { %>
+  <% if (!allListings || allListings.length === 0) { %>
     <div class="no-bookings">
-      
       <p>You haven't booked any listings yet.</p>
       <a href="/listings" class="explore-btn">Explore Listings</a>
     </div>
   <% } else { %>
     <div class="bookings-grid">
       <% allListings.forEach(listing => { %>
-        <div class="booking-card">
-          <div class="booking-image">
-            <img src="<%= listing.image?.url || '/images/default-listing.jpg' %>" alt="<%= listing.title %>">
-          </div>
+        <% if (listing) { %> 
+          <div class="booking-card">
+            <div class="booking-image">
+              <img 
+                src="<%= listing.image?.url || '/images/default-listing.jpg' %>" 
+                alt="<%= listing.title || 'Listing' %>">
+            </div>
 
-          <div class="booking-details">
-            <h3 class="booking-title"><%= listing.title %></h3>
-            <p class="booking-location"><%= listing.location %></p>
-            <p class="booking-price">₹<%= listing.price %> / night</p>
+            <div class="booking-details">
+              <h3 class="booking-title"><%= listing.title || 'Untitled Listing' %></h3>
+              <p class="booking-location"><%= listing.location || 'Unknown location' %></p>
+              <p class="booking-price">
+                ₹<%= listing.price || 'N/A' %> / night
+              </p>
 
-            <a href="/listings/<%= listing._id %>" class="view-btn">View Listing</a>
+              <a href="/listings/<%= listing._id %>" class="view-btn">View Listing</a>
+            </div>
           </div>
-        </div>
+        <% } else { %>
+          <!-- Optional fallback if the listing is missing entirely -->
+          <div class="booking-card missing-listing">
+            <div class="booking-image">
+              <img src="/images/default-listing.jpg" alt="Deleted listing">
+            </div>
+            <div class="booking-details">
+              <h3 class="booking-title">Listing not available</h3>
+              <p class="booking-location">This listing may have been removed.</p>
+            </div>
+          </div>
+        <% } %>
       <% }) %>
     </div>
   <% } %>
 </div>
-
-<style>
-
-</style>
