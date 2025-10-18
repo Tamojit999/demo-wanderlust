@@ -908,14 +908,19 @@ label {
     
     
   }
-   .unique-edit-btn,
-  .unique-delete-btn {
-    width: 100%;              /* Make buttons full width */
-    padding: 0.9rem 1rem;     /* Slightly larger for touch screens */
-    font-size: 0.95rem;       /* Adjust text size */
-    margin-bottom: 0.5rem;    /* Space between stacked buttons */
+  .unique-action-buttons {
+    flex-direction: column;     /* stack vertically */
+    align-items: stretch;       /* stretch to full width */
+    gap: 0.6rem;                /* add spacing between buttons */
   }
 
+  .unique-edit-btn,
+  .unique-delete-btn {
+    width: 100%;                /* full width */
+    padding: 1rem;              /* touch-friendly padding */
+    font-size: 1rem;            /* readable size */
+    border-radius: 10px;
+  }
   .unique-review-textarea {
     font-size: 0.9rem;
   }
