@@ -39,7 +39,13 @@
             <!-- Action Buttons -->
             <div class="profile-review-actions">
               <% if(r.listing){ %>
-                <a href="/listings/<%= r.listing._id %>" class="profile-view-btn">View</a>
+                <form action="/listings/<%= r.listing._id %>" method="get" >
+                  <button class="profile-view-btn" type="submit">
+                    View
+                  </button>
+
+                </form>
+                
 
                 <form action="/listings/<%= r.listing._id %>/review/<%= r._id %>?_method=DELETE" method="POST" class="profile-delete-form">
                   <button class="profile-delete-btn" type="submit">
