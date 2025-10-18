@@ -53,7 +53,7 @@ const listingschema = new mongoose.Schema({
     category: {
         type: String,
         default: 'cities',
-        enum: ['mountain','farm','pool','forest','beach','cities'],
+        enum: ['mountain','farm','pool','forest','beach','cities','boat'],
         required: true
     },
     bookings:[
