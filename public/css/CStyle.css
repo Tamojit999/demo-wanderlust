@@ -482,25 +482,30 @@ label {
     margin-bottom: 4px;
     display: inline-block;
 }
-
-/*profile reviews*/
+/* ============================== */
+/* ===== PROFILE REVIEWS GRID ====*/
+/* ============================== */
 .profile-reviews-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 25px;
-  justify-content:space-evenly;
+  justify-content: center;
+  margin-top: 1.5rem;
 }
 
-/* Individual Card */
+/* ============================== */
+/* ===== INDIVIDUAL REVIEW CARD ===*/
+/* ============================== */
 .profile-review-card {
   display: flex;
+  flex-direction: row;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   overflow: hidden;
   width: 100%;
   max-width: 350px;
-  height: 150px; /* Fixed height */
+  height: auto; /* Auto height to adapt content */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -509,7 +514,9 @@ label {
   box-shadow: 0 6px 12px rgba(0,0,0,0.12);
 }
 
-/* Image */
+/* ============================== */
+/* ===== IMAGE SECTION ============*/
+/* ============================== */
 .profile-review-image {
   width: 100px;
   height: 100%;
@@ -523,7 +530,9 @@ label {
   object-fit: cover;
 }
 
-/* Content */
+/* ============================== */
+/* ===== CONTENT SECTION ==========*/
+/* ============================== */
 .profile-review-content {
   padding: 0.8rem 1rem;
   display: flex;
@@ -535,16 +544,16 @@ label {
 
 /* Titles & Author */
 .profile-listing-title {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 600;
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
- 
+  white-space: nowrap;
 }
 
 .profile-review-author {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #555;
   margin: 0.4rem 0;
   overflow: hidden;
@@ -555,31 +564,41 @@ label {
 /* Rating */
 .profile-review-rating {
   color: #ffb400;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
   margin-bottom: 0.3rem;
-  margin-top: 1rem;
 }
 
 /* Comment */
 .profile-review-comment {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #333;
-  line-height: 1.3;
+  line-height: 1.4;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Fixed number of lines */
+  -webkit-line-clamp: 3; /* 3 lines */
   -webkit-box-orient: vertical;
 }
 
-/* Delete Button */
+/* ============================== */
+/* ===== BUTTONS ==================*/
+/* ============================== */
+.profile-review-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 0.4rem;
+  flex-wrap: wrap; /* Allow buttons to wrap */
+}
+
+.profile-view-btn,
 .profile-delete-btn {
-  background-color: #ff385c;
   border: none;
-  padding: 5px 8px;
   border-radius: 8px;
-  color: #fff;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 10px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -587,48 +606,105 @@ label {
   transition: background-color 0.3s ease;
 }
 
-.profile-delete-btn:hover {
-  background-color: #e63950;
-}
-
-.profile-review-actions {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  margin-top: 0.4rem;
-}
-
 .profile-view-btn {
   background-color: #008489;
   color: #fff;
   text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 4px 8px;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
 }
 
 .profile-view-btn:hover {
   background-color: #006f72;
 }
 
-/* Responsive */
+.profile-delete-btn {
+  background-color: #ff385c;
+  color: #fff;
+}
+
+.profile-delete-btn:hover {
+  background-color: #e63950;
+}
+
+/* ============================== */
+/* ===== EMPTY STATE ============= */
+/* ============================== */
+.profile-no-reviews {
+  text-align: center;
+  color: #777;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+}
+
+/* ============================== */
+/* ===== RESPONSIVE DESIGN ======= */
+/* ============================== */
+
+/* Tablets: 2 cards per row */
+@media (max-width: 1024px) {
+  .profile-reviews-grid {
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .profile-review-card {
+    max-width: 48%;
+  }
+}
+
+/* Mobile: stacked cards, buttons full width */
 @media (max-width: 768px) {
+  .profile-reviews-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
   .profile-review-card {
     flex-direction: column;
     max-width: 100%;
-    height: 180px; /* Slightly taller for stacked layout */
+    height: auto;
+    text-align: center;
   }
 
   .profile-review-image {
     width: 100%;
-    height: 100px;
+    height: 160px;
+  }
+
+  .profile-review-content {
+    padding: 1rem;
+    align-items: center;
+  }
+
+  .profile-review-actions {
+    flex-direction: column; /* Stack buttons vertically */
+    width: 100%;
+    gap: 10px;
+  }
+
+  .profile-view-btn,
+  .profile-delete-btn {
+    width: 100%; /* Full width buttons */
+    padding: 10px 0;
+    font-size: 1rem;
+  }
+
+  .profile-listing-title {
+    white-space: normal; /* Allow title to wrap */
   }
 }
+
+/* Extra small phones */
+@media (max-width: 480px) {
+  .profile-review-image {
+    height: 140px;
+  }
+
+  .profile-review-content {
+    padding: 0.8rem;
+  }
+}
+
 
 /* ============================== */
 /* ===== PAGE CONTAINER ==========*/
