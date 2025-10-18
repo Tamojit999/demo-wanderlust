@@ -647,52 +647,42 @@ label {
 
 /* Mobile: single column, uniform cards */
 @media (max-width: 768px) {
-  .profile-reviews-grid {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-  }
-
   .profile-review-card {
+    flex-direction: column;    /* stack image and content */
     max-width: 100%;
-    height: 300px; /* keep same height */
+    height: auto;              /* let it grow automatically */
+    text-align: center;
   }
 
   .profile-review-image {
-    height: 120px;
+    width: 100%;
+    height: 140px;             /* fixed image height */
   }
 
   .profile-review-content {
     padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* ensures buttons stay at bottom */
   }
 
   .profile-review-actions {
-    flex-direction: column;
+    flex-direction: column;    /* stack buttons */
+    width: 100%;
     gap: 10px;
   }
 
   .profile-view-btn,
   .profile-delete-btn {
-    width: 100%;
+    width: 100%;               /* full width buttons */
     padding: 10px 0;
     font-size: 1rem;
-  }
-
-  .profile-listing-title {
-    white-space: normal; /* allow title wrap */
+    display: inline-flex;
+    justify-content: center;
   }
 }
 
-/* Extra small phones */
-@media (max-width: 480px) {
-  .profile-review-card {
-    height: 280px;
-  }
-
-  .profile-review-image {
-    height: 100px;
-  }
-}
 
 
 
