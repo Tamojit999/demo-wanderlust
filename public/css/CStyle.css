@@ -857,9 +857,6 @@ label {
   font-style: italic;
 }
 
-/* ============================== */
-/* ===== RESPONSIVE ==============*/
-/* ============================== */
 @media (max-width: 768px) {
   .unique-listing-title {
     font-size: 1.6rem;
@@ -1165,7 +1162,7 @@ label {
   color: #000;
 }
 
-/* ✅ Mobile layout: scrollable row with smaller icons/text */
+/*  Mobile layout: scrollable row with smaller icons/text */
 @media (max-width: 768px) {
   #filter {
     display: flex;
@@ -1196,10 +1193,10 @@ label {
 }
 footer {
   position: relative;
-  width: 100vw; /* ✅ Full viewport width */
+  width: 100vw; /*  Full viewport width */
   left: 50%;
   right: 50%;
-  margin-left: -50vw; /* ✅ Override any container constraints */
+  margin-left: -50vw; /*  Override any container constraints */
   margin-right: -50vw;
   
   background-color: #f8f8f8;

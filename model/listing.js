@@ -42,7 +42,7 @@ const listingschema = new mongoose.Schema({
         type: {
             type: String,
             enum: ['Point'],
-            default: 'Point', // ✅ default value
+            default: 'Point', 
             required: true
         },
         coordinates: {
