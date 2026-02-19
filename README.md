@@ -1,4 +1,4 @@
-# Airbnb Project - Property Rental Platform
+# WanderLust - Property Rental Platform
 
 A full-stack web application built with Node.js, Express, and MongoDB that allows users to browse, list, and book properties. The platform features user authentication, property listings with reviews, secure payment processing, and interactive mapping functionality.
 
